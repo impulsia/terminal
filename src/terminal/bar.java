@@ -1,32 +1,28 @@
 package terminal;
 
 public class bar {
-	
-	/*ВОПРОС: как реализовать переход к следующему или предыдущему бару только
-	 *в его валютной паре и периоде?
-	*/
-	
-	//АТТРИБУТЫ БАРА
-	//Пример данных одного бара 2017.09.26,04:30,1.1853,1.1859,1.1853,1.1858,142
-	//private Date;              //Дата старта бара
-	//private Time;              //Время старта бара
-	private String name;         //Имя валютной пары
-	private String period;       //Длительность периода бара (1 минута, 5 минут, 15 минут, 30 минут, 1 час, 1 день, 1 неделя, 1 месяц)
-	private double priceLow;     //Минимумальный курс бара
-	private double priceHigh;    //Максимальный курс бара
-	private double priceOpen;    //Курс открытия бара
-	private double priceClose;   //Курс закрытия бара
-	private int volume;          //Общий объём продаж данной валютной пары
+		
+	//ATTRIBUTES
+	//Bar example from SCV file:  2017.09.26,04:30,1.1853,1.1859,1.1853,1.1858,142
+	//private Date;              //Date
+	//private Time;              //Time
+	private String name;         //Name of money pair
+	private String period;       //Time period (1 minute, 5 minuts, 15 minuts, 30 minuts, 1 hour, 4 hours, 1 day, 1 week, 1 month)
+	private double priceLow;     //Minimal price
+	private double priceHigh;    //Maximal price
+	private double priceOpen;    //Open price
+	private double priceClose;   //Close price
+	private int volume;          //Volume
 	
 	
-	//Конструктор бара
+	//CONSTRUCTOR
 	bar(){
 		
 		
 	}
 
 
-	//ПОВЕДЕНИЕ (МЕТОДЫ) БАРА
+	//METHODS
 
 	public String getName() {
 		return name;
