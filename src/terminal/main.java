@@ -43,7 +43,7 @@ public class main {
 		 		    
 		 		}
 		 		 catch(IOException ex){       
-		 		    System.out.println("ќшибка: " +ex.getMessage());
+		 		    System.out.println("Ошибка: " +ex.getMessage());
 		 		} 
 		    	 
 		    	 
