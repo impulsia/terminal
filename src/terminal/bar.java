@@ -1,41 +1,50 @@
 package terminal;
 
-public class bar {
-		
+public class Bar {
+	private static int const MILLISECONDS_IN_MINUTE = 60 * 1000;
 	//ATTRIBUTES
 	//Bar example from SCV file:  2017.09.26,04:30,1.1853,1.1859,1.1853,1.1858,142
 	//private Date;              //Date
 	//private Time;              //Time
-	private String name;         //Name of money pair
-	private String period;       //Time period (1 minute, 5 minuts, 15 minuts, 30 minuts, 1 hour, 4 hours, 1 day, 1 week, 1 month)
-	private double priceLow;     //Minimal price
-	private double priceHigh;    //Maximal price
-	private double priceOpen;    //Open price
-	private double priceClose;   //Close price
-	private int volume;          //Volume
+	//private String currencyPair;         //Name of currency pair
+
+	// typical values 1 minute, 5 minutes, 15 minutes, 30 minutes, 1 hour, 4 hours, 1 day, 1 week, 1 month
+	private int timeframe;       // in minutes; 
+
+	private Currency firstCurrency;
+	private Currency secondCurrency;
+
+	private Date startTime;
 	
+	private double minimalPrice;
+	private double maximalPrice;
+	private double openingPrice;
+	private double closingPrice;
+
+	private int volume; 
 	
-	private String str;
-	
+		
 	private int Year;
 	private int Month;
 	private int Day;
 	private int Hour;
 	private int Minute;
 	
-	private double PriceOpen;
-	private double PriceHigh;
-	private double PriceLow;
-	private double PriceClose;
-	private int Volume;
-	
 	
 	//CONSTRUCTOR
-	public bar(){
-		System.out.println("ERROR!!! Make empty bar");
+	public Bar(int timeframe, 
+				Currency firstCurrency, 
+				Currency secondCurrency, 
+				Date startTime, 
+				double minimalPrice,
+				double maximalPrice,
+				double openingPrice,
+				double closingPrice) {
+		// TODO: 
 	}
 
-	public bar(String str){
+	// TODO: вынести в функцию в main (после разберемся)
+	public Bar(String str){
 
 		//Devide String wia "," to logical parts date-time-price-volume
 		String[] tempLine = str.split(",");	
@@ -76,9 +85,19 @@ public class bar {
 		System.out.println("make bar object");
 	}
 
-	public int getVolume(){
-		return Volume;
+	// TODO: getters
+	public int getVolume() {
+		return volume;
 	}
 
-	
+	public Date getStartTime() {
+		return startTime;
+	}
+
+	public Date getFinalTime() {
+		long startTimeInMilliseconds = startTime.getTime()
+		long finalTimeInMilliseconds = startTimeInMilliseconds + timeframe * MILLISECONDS_IN_MINUTE;
+
+		return new Date(finalTimeInMilliseconds);
+	}
 }
