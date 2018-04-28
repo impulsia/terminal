@@ -15,21 +15,70 @@ public class bar {
 	private int volume;          //Volume
 	
 	
+	private String str;
+	
+	private int Year;
+	private int Month;
+	private int Day;
+	private int Hour;
+	private int Minute;
+	
+	private double PriceOpen;
+	private double PriceHigh;
+	private double PriceLow;
+	private double PriceClose;
+	private int Volume;
+	
+	
 	//CONSTRUCTOR
-	bar(){
+	public bar(){
+		System.out.println("ERROR!!! Make empty bar");
+	}
+
+	public bar(String str){
+
+		//Devide String wia "," to logical parts date-time-price-volume
+		String[] tempLine = str.split(",");	
+				
+		for(int i = 0; i<tempLine.length; i++){
+				
+			//take date from String str
+			if(i == 0){
+				Year = Integer.valueOf(tempLine[0].substring(0,4));
+				Month = Integer.valueOf(tempLine[0].substring(5,7));
+				Day = Integer.valueOf(tempLine[0].substring(8,tempLine[0].length()));					
+			} 
+			
+			 //take time from String str			
+			if(i == 1){
+				String[] timeParts = tempLine[i].split(":");
+				Hour = Integer.valueOf(timeParts[0]);
+				Minute = Integer.valueOf(timeParts[1]);
+			} 
+			
+			//take open price from String str
+			if(i == 2) PriceOpen = Double.valueOf(tempLine[i]);
+
+			// take maximum price from String str			
+			if(i == 3) PriceHigh = Double.valueOf(tempLine[i]);
+			
+			//take minimum price from String str			
+			if(i == 4) PriceLow = Double.valueOf(tempLine[i]);
+			
+			//take close price from String str			
+			if(i == 5) PriceClose = Double.valueOf(tempLine[i]);
+			
+			//take volume from String str			
+			if(i == 6) Volume = Integer.valueOf(tempLine[i]);
+		}
 		
-		
+		//System.out.println("BAR>make " + Day + "." + Month + "." + Year + "   " + Hour + ":" + Minute + "   " +  PriceOpen + "; " +  PriceHigh + "; " +  PriceLow + "; " +  PriceClose + ";   " +  Volume);
+		System.out.println("make bar object");
 	}
 
-
-	//METHODS
-
-	public String getName() {
-		return name;
+	public int getVolume(){
+		return Volume;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
+	
 }

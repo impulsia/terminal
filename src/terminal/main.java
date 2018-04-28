@@ -2,56 +2,43 @@ package terminal;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
 public class main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args)  {
 		// TODO Auto-generated method stub
 		
-		ArrayList<bar> bars = new ArrayList();
-		
-		File []fList; 
-		File F = new File("data\\");
-		fList = F.listFiles();
-		
-		for(int i=0; i<fList.length; i++)           
-		{
-		     if(fList[i].isFile())
-		     {
-		    	 System.out.println("פאיכ " + String.valueOf(i) + ": " + fList[i].getName());
-		    	 
-		    	 try (BufferedReader br = new BufferedReader(new FileReader(F)))
-		 		{
-		 		    String s;
-		 		   // Bar mybars[] = new Bar[bar_count];
-		 		    int j = 0;
-		 		    while((s=br.readLine())!=null)
-		 		    {      
-		 		    	//mybars[i] = new Bar(i,s);
-		 		        j++;
-		 		    }
-		 		    
-		 		   
-		 		    
-		 		    String para = F.getName();
-		 		    		
-		 			System.out.println("LENTA> file: " + para);
-		 		    System.out.println("LENTA> lines: " + j);
-		 		    
-		 		}
-		 		 catch(IOException ex){       
-		 		    System.out.println("Îרטבךא: " +ex.getMessage());
-		 		} 
-		    	 
-		    	 
-		     }
-		}
-		
-	//	bars.add();
-
+		   File myFolder = new File("data");
+		   File[] myfile = myFolder.listFiles();
+		   System.out.println(myFolder.getAbsolutePath());
+		   
+		   ArrayList<bar>allbars = new ArrayList<bar>();
+		   
+		    //Read file end print to console
+		   for(int i=0; i<myfile.length; i ++)
+		   {
+		    	String para = myfile[i].getName();
+		    	System.out.println("file name: " + para);
+			   try (BufferedReader br = new BufferedReader(new FileReader(myfile[i])))
+				{
+			    	String str;
+			    	while((str=br.readLine())!=null)
+			    	{      
+			    		System.out.println(str);
+			    		//add new bar to allbars ArrayList
+			    		allbars.add(new bar(str));
+			    	}
+				}
+			 	catch(IOException ex) {System.out.println("Error: " +ex.getMessage());}
+		   }
+		   
+		    bar testbar = allbars.get(0);
+			System.out.println("test Getter getVolume() from testbar " + testbar.getVolume());
+			
 	}
 
 }

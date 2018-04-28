@@ -1,0 +1,54 @@
+package terminal;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+
+public class main {
+
+	public static void main(String[] args) throws FileNotFoundException {
+		// TODO Auto-generated method stub
+
+		   File myFolder = new File("\\data");
+		   File[] myfile = myFolder.listFiles();
+		   /*
+
+		   
+			try (BufferedReader br = new BufferedReader(new FileReader(myfile)))
+			{
+			    while((br.readLine())!=null) bar_count++;
+			}
+			 catch(IOException ex){ 
+				 System.out.println(ex.getMessage()); 
+				 }
+			
+		*/
+			
+		    //—оздание баров дл¤ данной ленты из указанного файла
+			try (BufferedReader br = new BufferedReader(new FileReader(myfile[0])))
+			{
+			    String s;
+			    int i = 0;
+			    while((s=br.readLine())!=null)
+			    {      
+			        i++;
+			    }
+			    			    
+			    String para = myfile[0].getName();
+			    	
+				//System.out.println("LENTA> file: " + para);
+			    //System.out.println("LENTA> lines: " + bar_count);
+			    
+			}
+			 catch(IOException ex){
+			             
+			    System.out.println("ќшибка: " +ex.getMessage());
+			} 
+		   
+	
+	}
+
+}

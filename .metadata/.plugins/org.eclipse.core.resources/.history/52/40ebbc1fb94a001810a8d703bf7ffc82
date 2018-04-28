@@ -1,0 +1,35 @@
+package terminal;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+
+public class main {
+
+	public static void main(String[] args)  {
+		// TODO Auto-generated method stub
+		
+		   File myFolder = new File("data");
+		   File[] myfile = myFolder.listFiles();
+		   System.out.println(myFolder.getAbsolutePath()());
+		   
+		    //Read file end print to console
+		   for(int i=0; i<myfile.length; i ++)
+		   {
+		    	String para = myfile[i].getName();
+		    	System.out.println("file name: " + para);
+			   try (BufferedReader br = new BufferedReader(new FileReader(myfile[i])))
+				{
+			    	String str;
+			    	while((str=br.readLine())!=null)
+			    	{      
+			    		System.out.println(str);
+			    	}
+				}
+			 	catch(IOException ex) {System.out.println("Error: " +ex.getMessage());}
+		   }
+	}
+}
