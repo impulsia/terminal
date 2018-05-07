@@ -28,17 +28,30 @@ public class main {
 			    	String str;
 			    	while((str=br.readLine())!=null)
 			    	{      
-			    		System.out.println(str);
-			    		//add new bar to allbars ArrayList
-			    		allbars.add(new bar(str));
+			    		bar newBar = new bar();			    		
+			    		String[] partsOfLine = str.split(",");	
+						
+			    		for(int j = 0; j<partsOfLine.length; j++){
+			    			if(j == 0){
+			    				newBar.setYear(Integer.valueOf(partsOfLine[0].substring(0,4)));
+			    				newBar.setMonth(Integer.valueOf(partsOfLine[0].substring(5,7)));
+			    				newBar.setDay(Integer.valueOf(partsOfLine[0].substring(8,partsOfLine[0].length())));					
+			    			} 
+			    			if(j == 1){
+			    				String[] timeParts = partsOfLine[j].split(":");
+			    				newBar.setHour(Integer.valueOf(timeParts[0]));
+			    				newBar.setMinute(Integer.valueOf(timeParts[1]));
+			    			} 
+			    			if(j == 2) newBar.setopeningPrice(Double.valueOf(partsOfLine[j]));		
+			    			if(j == 3) newBar.setmaximalPrice((Double.valueOf(partsOfLine[j])));		
+			    			if(j == 4) newBar.setminimalPrice(Double.valueOf(partsOfLine[j]));		
+			    			if(j == 5) newBar.setclosingPrice(Double.valueOf(partsOfLine[j]));			
+			    			if(j == 6) newBar.setvolume(Integer.valueOf(partsOfLine[j]));
+			    		}
+			    		allbars.add(newBar);
 			    	}
 				}
 			 	catch(IOException ex) {System.out.println("Error: " +ex.getMessage());}
-		   }
-		   
-		    bar testbar = allbars.get(0);
-			System.out.println("test Getter getVolume() from testbar " + testbar.getVolume());
-			
+		   }  			
 	}
-
 }
