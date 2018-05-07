@@ -13,8 +13,8 @@ public class bar {
 	// typical values 1 minute, 5 minutes, 15 minutes, 30 minutes, 1 hour, 4 hours, 1 day, 1 week, 1 month
 	private int timeframe;       // in minutes; 
 
-	private ñurrency firstCurrency;
-	private ñurrency secondCurrency;
+	private currency firstCurrency;
+	private currency secondCurrency;
 
 	private Date startTime;
 	
@@ -42,10 +42,10 @@ public class bar {
 	public int gettimeframe(){
 		return timeframe;
 	}
-	public ñurrency getfirstCurrency (){
+	public currency getfirstCurrency (){
 		return firstCurrency;
 	}
-	public ñurrency getsecondCurrency (){
+	public currency getsecondCurrency (){
 		return secondCurrency;
 	}
 	
